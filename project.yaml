@@ -1,5 +1,5 @@
 specVersion: 1.0.0
-name: algorand-planet-watch
+name: algorand-randgallery
 version: 1.0.0
 runner:
   node:
@@ -9,7 +9,7 @@ runner:
     name: "@subql/query"
     version: "*"
 description: >-
-  This project is a quick start guide for developing your Algorand SubQuery project, it indexes Algorand PlanetWatch token transfers
+  This project is a quick start guide for developing your Algorand SubQuery project, it indexes RandGallery's transactions.
 repository: "https://github.com/jamesbayly/algorand-planet-watch"
 schema:
   file: ./schema.graphql
@@ -21,14 +21,14 @@ network:
   dictionary: https://api.subquery.network/sq/subquery/Algorand-Dictionary
 dataSources:
   - kind: algorand/Runtime
-    startBlock: 8712119 # Block that planet was created on https://algoexplorer.io/tx/G66KX3TLKXUI547DFB4MNVY7SJVADOJKGP4SWMRC632GFHSFX5KQ
+    startBlock: 14439171 # Block that Rand account received first transaction. This is used to speed up indexing. 
     mapping:
       file: ./dist/index.js
       handlers:
         - handler: handleTransaction
           kind: algorand/TransactionHandler
           filter:
-            # payments from the Planet Watch Address for the PLANET asset
+            # payments to the RandGallery Address for the Algo asset
             txType: axfer
-            assetId: 27165954
-            sender: "ZW3ISEHZUHPO7OZGMKLKIIMKVICOUDRCERI454I3DB2BH52HGLSO67W754"
+            assetId: 0
+            receiver: "RANDGVRRYGVKI3WSDG6OGTZQ7MHDLIN5RYKJBABL46K5RQVHUFV3NY5DUE"
