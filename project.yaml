@@ -29,6 +29,6 @@ dataSources:
           kind: algorand/TransactionHandler
           filter:
             # payments to the RandGallery Address for the Algo asset
-            txType: axfer
+            txType: pay
             assetId: 0
             receiver: "RANDGVRRYGVKI3WSDG6OGTZQ7MHDLIN5RYKJBABL46K5RQVHUFV3NY5DUE"
